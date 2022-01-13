@@ -73,4 +73,4 @@ rm -rf $ZSH_CUSTOM/plugins/gitgo
 
 ## Credits
 
-This simple zsh git plugin is possible because of the amazing [junegunn/fzf](https://github.com/junegunn/fzf) command-line fuzzy finder. Go give check it out and git it a star on GitHub!
+This simple zsh git plugin is possible because of the amazing [junegunn/fzf](https://github.com/junegunn/fzf) command-line fuzzy finder.
