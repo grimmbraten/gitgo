@@ -9,7 +9,7 @@ gitgo() {
         args=($@)
 
         for value in "${args[@]}"; do
-            if [ "$value" = "--delete" ]; then
+            if [ "$value" = "--delete" ] || [ "$value" = "-d" ]; then
                 action="delete"
             else
                 query="$value"
@@ -25,7 +25,15 @@ gitgo() {
 
         if [ ! -z "$branch" ]; then
             if [ "$action" = "delete" ]; then
-                git branch -d "$(echo $branch | awk '{$1=$1};1')"
+                if [[ "$branch" = *"*"* ]]; then
+                    git checkout master &>/dev/null
+
+                    if [ $? -ne 0 ]; then
+                        git checkout main &>/dev/null
+                    fi
+                fi
+
+                git branch -d "$(echo $branch | tr -d "*" | awk '{$1=$1};1')"
             else
                 git checkout "$(echo $branch | awk '{$1=$1};1')"
             fi
