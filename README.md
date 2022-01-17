@@ -31,6 +31,17 @@ gitgo
 > _
 ```
 
+Checkout branch (without pulling the latest remote origin changes)
+
+```bash
+gitgo feature/work-in-progress --freeze
+
+>   feature/work-in-progress
+  What branch would you like to checkout? (freeze)
+  1/4
+> error
+```
+
 Delete a local branch
 
 ```bash
@@ -43,28 +54,6 @@ gitgo --delete
   What branch would you like to delete?
   4/4
 > _
-```
-
-Apply search query from plugin command
-
-```bash
-gitgo -d error
-
->   bugfix/resolve-418-status-code-error
-  What branch would you like to delete?
-  1/4
-> error
-```
-
-Checkout branch (without pulling the latest remote origin changes)
-
-```bash
-gitgo feature/work-in-progress --freeze
-
->   feature/work-in-progress
-  What branch would you like to delete? (freeze)
-  1/4
-> error
 ```
 
 ## Upgrade
