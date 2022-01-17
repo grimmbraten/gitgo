@@ -1,4 +1,4 @@
-A zsh plugin that helps you checkout and delete git branches with a single command.
+A zsh plugin to go between git branches with ease
 
 ## Install
 
