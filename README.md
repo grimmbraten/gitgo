@@ -39,7 +39,7 @@ gitgo feature/work-in-progress --freeze
 >   feature/work-in-progress
   What branch would you like to checkout? (freeze)
   1/4
-> error
+> feature/work-in-progress
 ```
 
 Delete a local branch
