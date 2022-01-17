@@ -18,7 +18,7 @@ gitgo() {
             fi
         done
 
-        branch=$(git branch | fzf --query="$query" --header "What branch do you want to $action? $special")
+        branch=$(git branch --all | fzf --query="$query" --header "What branch do you want to $action? $special")
 
         if [ ! -z "$branch" ]; then
             if [ "$action" = "delete" ]; then
@@ -30,9 +30,9 @@ gitgo() {
                     fi
                 fi
 
-                git branch -d "$(echo $branch | tr -d "*" | awk '{$1=$1};1')"
+                git branch -d "$(echo $branch | tr -d "*" | sed 's/remotes\/origin\///g' | awk '{$1=$1};1')"
             else
-                git checkout "$(echo $branch | awk '{$1=$1};1')"
+                git checkout "$(echo $branch | tr -d "*" | sed 's/remotes\/origin\///g' | awk '{$1=$1};1')"
             fi
 
             if [ "$special" != "(freeze)" ]; then
