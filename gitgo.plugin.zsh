@@ -3,7 +3,7 @@ if ! command -v fzf &>/dev/null; then
 fi
 
 gitgo() {
-    local args branch query action="checkout"
+    local args branch query special action="checkout"
 
     if command -v fzf &>/dev/null; then
         args=($@)
@@ -11,17 +11,14 @@ gitgo() {
         for value in "${args[@]}"; do
             if [ "$value" = "--delete" ] || [ "$value" = "-d" ]; then
                 action="delete"
+            elif [ "$value" = "--freeze" ] || [ "$value" = "-f" ]; then
+                special="(freeze)"
             else
                 query="$value"
             fi
         done
 
-        if [ -z "$query" ]; then
-            branch=$(git branch | fzf --header "What branch do you want to $action?")
-
-        else
-            branch=$(git branch | fzf --query="$query" --header "What branch do you want to $action?")
-        fi
+        branch=$(git branch | fzf --query="$query" --header "What branch do you want to $action? $special")
 
         if [ ! -z "$branch" ]; then
             if [ "$action" = "delete" ]; then
@@ -36,6 +33,10 @@ gitgo() {
                 git branch -d "$(echo $branch | tr -d "*" | awk '{$1=$1};1')"
             else
                 git checkout "$(echo $branch | awk '{$1=$1};1')"
+            fi
+
+            if [ "$special" != "(freeze)" ]; then
+                git pull --prune --quiet
             fi
         fi
     else
