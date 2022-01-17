@@ -46,7 +46,7 @@ gitgo --delete
 Apply search query from plugin command
 
 ```bash
-gitgo --delete error
+gitgo -d error
 
 >   bugfix/resolve-418-status-code-error
   What branch would you like to delete?
