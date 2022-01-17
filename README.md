@@ -15,7 +15,7 @@ Add `gitgo` to the plugin array in your `.zshrc` file.
 plugins=(...other-plugins gitgo)
 ```
 
-## Usage
+## Use
 
 Checkout a branch
 
@@ -23,10 +23,11 @@ Checkout a branch
 gitgo
 
 >   feature/implement-new-feature
+    feature/work-in-progress
   * master
     bugfix/resolve-418-status-code-error
   What branch would you like to checkout?
-  3/3
+  4/4
 > _
 ```
 
@@ -36,10 +37,11 @@ Delete a local branch
 gitgo --delete
 
 >   feature/implement-new-feature
+    feature/work-in-progress
   * master
     bugfix/resolve-418-status-code-error
   What branch would you like to delete?
-  3/3
+  4/4
 > _
 ```
 
@@ -50,7 +52,18 @@ gitgo -d error
 
 >   bugfix/resolve-418-status-code-error
   What branch would you like to delete?
-  1/3
+  1/4
+> error
+```
+
+Checkout branch (without pulling the latest remote origin changes)
+
+```bash
+gitgo feature/work-in-progress --freeze
+
+>   feature/work-in-progress
+  What branch would you like to delete? (freeze)
+  1/4
 > error
 ```
 
