@@ -31,13 +31,27 @@ gitgo
 > _
 ```
 
-Checkout branch (without pulling the latest remote origin changes)
+Checkout a branch (and update remote references)
 
 ```bash
-gitgo feature/work-in-progress --freeze
+gitgo --fetch
+
+>   feature/implement-new-feature
+    feature/work-in-progress
+  * master
+    bugfix/resolve-418-status-code-error
+  What branch would you like to checkout?
+  4/4
+> _
+```
+
+Checkout branch (and pull the latest changes)
+
+```bash
+gitgo feature/work-in-progress --pull
 
 >   feature/work-in-progress
-  What branch would you like to checkout? (freeze)
+  What branch would you like to checkout?
   1/4
 > feature/work-in-progress
 ```
