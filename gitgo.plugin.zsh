@@ -24,11 +24,11 @@ gitgo() {
             git fetch --all --prune --quiet
         fi
 
-        branch=$(git branch --all | fzf --query="$query" --header "What branch do you want to $action?")
+        branch=$(git branch --all | fzf --query="$query" --exit-0 --select-1 --header "What branch do you want to $action?" | tr -d "*" | sed 's/remotes\/origin\///g' | awk '{$1=$1};1')
 
         if [ ! -z "$branch" ]; then
             if [ "$action" = "delete" ]; then
-                if [[ "$branch" = *"*"* ]]; then
+                if [[ "$branch" = $(git name-rev --name-only HEAD) ]]; then
                     git checkout master &>/dev/null
 
                     if [ $? -ne 0 ]; then
@@ -36,9 +36,9 @@ gitgo() {
                     fi
                 fi
 
-                git branch -d "$(echo $branch | tr -d "*" | sed 's/remotes\/origin\///g' | awk '{$1=$1};1')"
+                git branch -d "$(echo $branch)"
             else
-                git checkout "$(echo $branch | tr -d "*" | sed 's/remotes\/origin\///g' | awk '{$1=$1};1')"
+                git checkout "$(echo $branch)"
             fi
 
             if [ $pull ]; then
