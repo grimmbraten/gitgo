@@ -21,7 +21,7 @@ gitgo() {
         done
 
         if [ $fetch ]; then
-            git fetch --prune --quiet
+            git fetch --all --prune --quiet
         fi
 
         branch=$(git branch --all | fzf --query="$query" --header "What branch do you want to $action?")

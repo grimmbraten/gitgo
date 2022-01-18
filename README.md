@@ -70,6 +70,14 @@ gitgo --delete
 > _
 ```
 
+### Flags
+
+`--fetch` / `-d`: Fetch and update remote-tracking references and remove any remote-tracking references that no longer exist.
+
+`--pull` / `-p`: Either fast-forward or reconcile the divergent local branch and remove any remote-tracking references that no longer exist.
+
+`--delete` / `-d`: Delete local fully upstream or HEAD branch.
+
 ## Upgrade
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/grimmbraten/gitgo?style=flat&color=blue)
