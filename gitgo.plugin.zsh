@@ -3,7 +3,7 @@ if ! command -v fzf &>/dev/null; then
 fi
 
 gitgo() {
-    local args branch query fetch pull action="checkout"
+    local args branch query fetch pull quiet action="checkout"
 
     if command -v fzf &>/dev/null; then
         args=($@)
@@ -15,13 +15,15 @@ gitgo() {
                 fetch="fetch"
             elif [ "$value" = "--pull" ] || [ "$value" = "-p" ]; then
                 pull="pull"
+            elif [ "$value" = "--quiet" ] || [ "$value" = "-q" ]; then
+                quiet="--quiet"
             else
                 query="$value"
             fi
         done
 
         if [ $fetch ]; then
-            git fetch --all --prune --quiet
+            git fetch --all --prune $quiet
         fi
 
         branch=$(git branch --all | fzf --query="$query" --exit-0 --select-1 --header "What branch do you want to $action?" | tr -d "*" | sed 's/remotes\/origin\///g' | awk '{$1=$1};1')
@@ -42,7 +44,7 @@ gitgo() {
             fi
 
             if [ $pull ]; then
-                git pull --prune --quiet
+                git pull --prune $quiet
             fi
         fi
     fi
