@@ -38,7 +38,7 @@ gitgo() {
                     fi
                 fi
 
-                git branch -d "$(echo $branch)"
+                git branch -D "$(echo $branch)"
             else
                 git checkout "$(echo $branch)"
             fi
