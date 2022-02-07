@@ -2,8 +2,7 @@ A zsh plugin to go between git branches with ease
 
 ## Install
 
-![license](https://img.shields.io/github/license/grimmbraten/gitgo?style=flat&color=blue)
-![size](https://img.shields.io/github/repo-size/grimmbraten/gitgo?style=flat&color=blue)
+![GitHub Repo stars](https://img.shields.io/github/stars/grimmbraten/gitgo?style=social)
 
 ```bash
 brew install fzf && git clone git@github.com:grimmbraten/gitgo.git $ZSH_CUSTOM/plugins/gitgo
@@ -21,7 +20,9 @@ Checkout a branch
 
 ```bash
 gitgo
+```
 
+```bash
 >   feature/implement-new-feature
     feature/work-in-progress
   * master
@@ -35,7 +36,9 @@ Checkout a branch (and update remote references)
 
 ```bash
 gitgo --fetch
+```
 
+```bash
 >   feature/implement-new-feature
     feature/work-in-progress
   * master
@@ -49,7 +52,9 @@ Checkout branch (and pull the latest changes)
 
 ```bash
 gitgo feature/work-in-progress --pull
+```
 
+```bash
 >   feature/work-in-progress
   What branch would you like to checkout?
   1/4
@@ -60,7 +65,9 @@ Delete a local branch
 
 ```bash
 gitgo --delete
+```
 
+```bash
 >   feature/implement-new-feature
     feature/work-in-progress
   * master
@@ -78,10 +85,12 @@ gitgo --delete
 
 `--delete` / `-d`: Delete local fully upstream or HEAD branch.
 
+`--quiet` / `-q`: Execute cli commands quietly.
+
 ## Upgrade
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/grimmbraten/gitgo?style=flat&color=blue)
-![GitHub open issues](https://img.shields.io/github/issues-raw/grimmbraten/gitgo?style=flat&color=blue)
+![GitHub open issues](https://img.shields.io/github/issues-raw/grimmbraten/gitgo?style=flat&color=yellow)
 
 ```bash
 $ git -C $ZSH_CUSTOM/plugins/gitgo pull
@@ -93,8 +102,6 @@ $ git -C $ZSH_CUSTOM/plugins/gitgo pull
 rm -rf $ZSH_CUSTOM/plugins/gitgo
 ```
 
-![GitHub Repo stars](https://img.shields.io/github/stars/grimmbraten/gitgo?style=social)
-
-## Credits
+## Credit
 
 This simple zsh git plugin is possible because of the amazing [junegunn/fzf](https://github.com/junegunn/fzf) command-line fuzzy finder.
